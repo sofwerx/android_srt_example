@@ -10,7 +10,7 @@ unpacked GStreamer Android binaries.
 
 ## Build and deploy on the command line
 
-To build and deploy the rtsp example to your device, use a command similar to:
+To build and deploy the srt example to your device, use a command similar to:
 
 ```bash
 $ PATH=~/dev/android/tools/bin:~/dev/android/ndk-bundle:$PATH ANDROID_HOME="$HOME/dev/android/" ./gradlew installDebug
@@ -19,7 +19,7 @@ $ PATH=~/dev/android/tools/bin:~/dev/android/ndk-bundle:$PATH ANDROID_HOME="$HOM
 ## Run the application on the device
 
 ```bash
-$ adb shell am start -n org.freedesktop.gstreamer.rtsp_example/.RTSPExample
+$ adb shell am start -n org.freedesktop.gstreamer.srt_example/.SRTExample
 ```
 
 To see the GStreamer logs at runtime:

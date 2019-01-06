@@ -156,7 +156,7 @@ static void *app_function (void *userdata) {
   g_main_context_push_thread_default(data->context);
 
   /* Build pipeline */
-  data->pipeline = gst_parse_launch("playbin uri=rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov audio-sink=fakesink", &error);
+  data->pipeline = gst_parse_launch("playbin uri=srt://172.109.152.122:20051/ audio-sink=fakesink", &error);
   if (error) {
     gchar *message = g_strdup_printf("Unable to build pipeline: %s", error->message);
     g_clear_error (&error);
@@ -211,8 +211,8 @@ static void *app_function (void *userdata) {
 static void gst_native_init (JNIEnv* env, jobject thiz) {
   CustomData *data = g_new0 (CustomData, 1);
   SET_CUSTOM_DATA (env, thiz, custom_data_field_id, data);
-  GST_DEBUG_CATEGORY_INIT (debug_category, "rtsp-example", 0, "Android RTSP example");
-  gst_debug_set_threshold_for_name("rtsp-example", GST_LEVEL_DEBUG);
+  GST_DEBUG_CATEGORY_INIT (debug_category, "srt-example", 0, "Android SRT example");
+  gst_debug_set_threshold_for_name("srt-example", GST_LEVEL_DEBUG);
   GST_DEBUG ("Created CustomData at %p", data);
   data->app = (*env)->NewGlobalRef (env, thiz);
   GST_DEBUG ("Created GlobalRef for app object at %p", data->app);
@@ -261,7 +261,7 @@ static jboolean gst_native_class_init (JNIEnv* env, jclass klass) {
     /* We emit this message through the Android log instead of the GStreamer log because the later
      * has not been initialized yet.
      */
-    __android_log_print (ANDROID_LOG_ERROR, "rtsp-example", "The calling class does not implement all necessary interface methods");
+    __android_log_print (ANDROID_LOG_ERROR, "srt-example", "The calling class does not implement all necessary interface methods");
     return JNI_FALSE;
   }
   return JNI_TRUE;
@@ -325,10 +325,10 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
   java_vm = vm;
 
   if ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_4) != JNI_OK) {
-    __android_log_print (ANDROID_LOG_ERROR, "rtsp-example", "Could not retrieve JNIEnv");
+    __android_log_print (ANDROID_LOG_ERROR, "srt-example", "Could not retrieve JNIEnv");
     return 0;
   }
-  jclass klass = (*env)->FindClass (env, "org/freedesktop/gstreamer/rtsp_example/RTSPExample");
+  jclass klass = (*env)->FindClass (env, "org/freedesktop/gstreamer/srt_example/SRTExample");
   (*env)->RegisterNatives (env, klass, native_methods, G_N_ELEMENTS(native_methods));
 
   pthread_key_create (&current_jni_env, detach_current_thread);
