@@ -8,6 +8,20 @@ a directory of your choice.
 Edit gradle.properties in order to set gstAndroidRoot to point to the
 unpacked GStreamer Android binaries.
 
+## Building gstreamer for android with SRT
+
+Presently, you must use cerbero to build srt for android universal, and then the gstreamer-1.0 package.
+
+	export GSTREAMER_ROOT_ANDROID=/opt/gstreamer-android/current
+	mkdir -p $GSTREAMER_ROOT_ANDROID
+	git clone https://gitlab.freedesktop.org/gstreamer/cerbero
+	cd cerbero
+	./cerbero-uninstalled -c config/cross-android-universal.cbc bootstrap
+	./cerbero-uninstalled -c config/cross-android-universal.cbc build srt
+	./cerbero-uninstalled -c config/cross-android-universal.cbc package gstreamer-1.0
+        tar xjf gstreamer-1.0-android-universal-1.15.0.1-runtime.tar.bz2 -C $GSTREAMER_ROOT_ANDROID
+	tar xjf gstreamer-1.0-android-universal-1.15.0.1.tar.bz2 -C $GSTREAMER_ROOT_ANDROID
+
 ## Build and deploy on the command line
 
 To build and deploy the srt example to your device, use a command similar to:
