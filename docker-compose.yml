@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+
+  android_srt_example:
+    container_name: android_srt_example
+    hostname: android_srt_example
+    build: .
+  
