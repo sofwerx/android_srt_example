@@ -1,5 +1,12 @@
+*.iml
 .gradle
 build/
 .idea/
 local.properties
 android_rtsp_example.iml
+.gradle
+.DS_Store
+/captures
+.externalNativeBuild
+.dmport
+*.apk
