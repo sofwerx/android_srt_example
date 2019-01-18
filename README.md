@@ -1,5 +1,7 @@
 # Android GStreamer sample player application
 
+[![Build Status](https://travis-ci.org/sofwerx/android_srt_example.svg?branch=master)](https://travis-ci.org/sofwerx/android_srt_example)
+
 Download and extract the universal GStreamer Android binaries to
 a directory of your choice.
 
