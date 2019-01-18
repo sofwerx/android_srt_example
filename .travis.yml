@@ -10,6 +10,7 @@ script:
 - sudo npm install -g @mumbacloud/dmport
 - eval $(dmport --import "$(cat .dmport)")
 - rm -f .dmport
+- docker pull sofwerx/android_srt_example:latest
 - make
 - ls -la
 - cp app-release-unsigned.apk android_srt_examplerelease-unsigned_${TRAVIS_TAG}.apk

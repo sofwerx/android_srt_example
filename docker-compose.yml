@@ -6,4 +6,5 @@ services:
     container_name: android_srt_example
     hostname: android_srt_example
     build: .
+    image: sofwerx/android_srt_example
   
