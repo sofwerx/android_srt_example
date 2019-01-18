@@ -1,3 +1,4 @@
+COMPOSE_FILE:=
 all:
 	docker-compose build android_srt_example
 	docker-compose up -d --force-recreate android_srt_example
