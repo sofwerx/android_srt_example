@@ -10,3 +10,4 @@ android_rtsp_example.iml
 .externalNativeBuild
 .dmport
 *.apk
+.dmport
